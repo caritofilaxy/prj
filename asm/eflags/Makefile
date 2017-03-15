@@ -1,4 +1,4 @@
-NAME := sandbox
+NAME := eflags
 SOURCE := $(NAME).asm
 OBJFILE := $(NAME).o
 

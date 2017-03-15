@@ -5,11 +5,8 @@ section .text
 
 _start:
 	nop
-	mov eax, 0xabcd
-	mov ebx, 0xff
-	jmp 0x8048093
-	add eax,1
-	shr eax,2
+	mov eax, 0x80000000
+	shl eax, 1
 	nop
 
 section .bss

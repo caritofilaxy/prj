@@ -1,4 +1,4 @@
-NAME := sandbox
+NAME := code
 SOURCE := $(NAME).asm
 OBJFILE := $(NAME).o
 
