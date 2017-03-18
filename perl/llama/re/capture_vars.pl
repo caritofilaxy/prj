@@ -17,3 +17,21 @@ $string = "I saw    Holmes    and	Watson yesterday.";
 if ($string =~ m{(?<cap1>\w+)\s+(?:and|or)\s+(?<cap2>\w+)}) {
 	say "Objects: 1. $+{cap1}, 2. $+{cap2}";
 }
+
+# labels with backrefs
+$string = "I saw   Dr Watson    and Mrs		Watson yesterday.";
+if ($string =~ m#(?<last_name>\w+)\s+(?:and|or)\s+\w+\s+\g{last_name}#) {
+	say "Last name: $+{last_name}";
+}
+
+# automatic match
+$string = "there are 1923 little demons";
+#if ($string =~ /\w+(\d+)\w+/) {
+#	say "Before parentheses: $`";
+#	say "In parentheses: $&";
+#	say "After parentheses: $'";
+if ($string =~ /\w+(\d+)\w+/p) {
+	say "Before parentheses: ${^PREMATCH}";
+	say "In parentheses: ${^MATCH}";
+	say "After parentheses: ${^POSTMATCH}";
+}
