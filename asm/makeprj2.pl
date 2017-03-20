@@ -59,6 +59,8 @@ die "Name, sister" unless $argc == 1;
 do_all($prj);
 
 
+
+### subs definition ###
 sub create_dir {
 	print "Making directory... ";
 	my $name = shift;
