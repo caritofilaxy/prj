@@ -36,5 +36,3 @@ say "$file is nonzero size and is setiud" if ( -s -u _ );
 #  -M Modification age (measured in days)
 #  -A Access age (measured in days)
 #  -C Inode-modification age (measured in days)
-
-
