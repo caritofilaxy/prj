@@ -6,10 +6,9 @@ use warnings;
 my %files_mtime;
 
 foreach (@ARGV) {
-	$ARGV{$_} = -M $_;
+	$files_mtime{$_} = -M $_;
 }
 
 foreach (keys %files_mtime) {
-	say "$files_mtime{$_}: $_";
+	say "$_: $files_mtime{$_}:";
 }
-
