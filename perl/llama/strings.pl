@@ -41,3 +41,16 @@ my $previous_value = substr($string, 7, 4, "shall");
 say $previous_value;
 say $string;
 
+###################	
+$string = "I will not make any deals with you, manny";
+my $sub = "ma";
+
+my @encs;
+
+for (my $pos = -1; ; ) {
+	$pos = index($string,$sub,$pos+1);
+	last if $pos == -1;
+	push @encs, $pos;
+}
+
+say "@encs";
