@@ -18,3 +18,4 @@ print $fh $content;
 close($fh);
 chmod 0755, $prj;
 
+exec("/usr/bin/vim $prj");
