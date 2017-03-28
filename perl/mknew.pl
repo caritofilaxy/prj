@@ -8,7 +8,7 @@ $prj =~ s#$#.pl#;
 my $content = <<'END_CONTENT';
 #!/usr/bin/perl
 
-use v5.022;
+use strict;
 use warnings;
 END_CONTENT
 
