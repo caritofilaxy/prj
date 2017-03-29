@@ -28,9 +28,26 @@ use warnings;
 #
 #	
 #	for my $item (@required) {
-#		unless (exists $whos_items{$item}) {
+#		unless (exists $whos_items{$item}) 
 #			print "$who missed $item\n";
 #		}
-#	}
-#	
-########################################################################
+#}
+######################################################################
+#
+
+sub check_required_items {
+	my $who = shift;
+	my $items = shift;
+	my @required = qw(shapka polotentse tapki mylo mochalka voda);
+
+	my %whos_items = map {$_,1} @{$items};
+	
+	for my $item (@required) {
+		unless (exists $whos_items{$item}) {
+			print "$who missed $item\n";
+		}
+	}
+}
+
+my @skipper = qw(bolt gaika tapki mylo mochalka voda);
+check_required_items("the skipper", \@skipper);
