@@ -45,7 +45,13 @@ print "@regs_used\n";
 my @index = qw(esi edi);
 my @seg_regs = qw(cs ds ss);
 
-my @all_regs = (\@gen_regs, \@ptrs, \@index, \@seg_regs);
-my $all_regs_ref = \@all_regs;
-my $give_me_ptrs = @{$all_regs_ref}[1];
-print "@$give_me_ptrs\n";
+my @all_regs = (\@gen_regs, \@ptrs, \@index, \@seg_regs);	# create array of refs (root array)
+my $all_regs_ref = \@all_regs;					# get ref to array
+my $give_me_ptrs = @{$all_regs_ref}[1];				# dereferece root array and get ref to second array
+print "@$give_me_ptrs\n";					# print dereferenced second array
+
+my $fst_index_reg = ${@$all_regs_ref[2]}[0];			# dereference root array, slice 3rd member, dereference it 
+								# and get 1st value. phewww... 
+print $fst_index_reg."\n";					# print it.
+
+
