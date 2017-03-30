@@ -3,67 +3,43 @@
 use strict;
 use warnings;
 
+my @gen_regs = qw(eax ebx ecx edx);	my @gen_regs_named = ('General',\@gen_regs); 	#my $gen_regs_ref = \@gen_regs;
+my @ptr_regs = qw(esp ebp);      	my @ptr_regs_named = ('Pointers',\@ptr_regs);	#my $ptr_regs_ref = \@ptr_regs;
+my @ind_regs = qw(esi edi);	 	my @ind_regs_named = ('Index', \@ind_regs);	#my $ind_regs_ref = \@ind_regs;
+my @seg_regs = qw(cs ds ss);	 	my @seg_regs_named = ('Segment', \@seg_regs);	#my $seg_regs_ref = \@seg_regs;
 
-# this section checks required items
-my @required = qw(shapka polotentse tapki mylo mochalka voda);
-my %i = map {$_,1} 
-	qw(bolt gaika tapki mylo mochalka voda);
+my @all_regs = (\@gen_regs_named, \@ptr_regs_named, \@ind_regs_named, \@seg_regs_named); my $all_regs_ref = \@all_regs;
 
-for my $item (@required) {
-	unless (exists $i{$item}) {
-		print "I missed $item\n";
-	}
-}
-
-######################################################################
-# this one does the same via sub
-my @me = qw(bolt gaika tapki mylo mochalka voda);
-my @tolik = qw(sigi venik mylo mochalka shapka);
-
-
-check_required_items0('me',@me);
-check_required_items0('tolik',@tolik);
-
-sub check_required_items0 {
-	my $who = shift;
-	my %whos_items = map {$_,1} @_;
-	my @required = qw(shapka polotentse tapki mylo mochalka voda);
-
-	
-	for my $item (@required) {
-		unless (exists $whos_items{$item}) {
-			print "$who missed $item\n";
-		}
-	}
-}
-######################################################################
-# here we pass list of items to compare via ref
-
-sub check_required_items {
+sub chk_req {
 	my $who = shift;
 	my $items = shift;
-	my %whos_items = map {$_,1} @{$items};
-	my @required = qw(shapka polotentse tapki mylo mochalka voda);
-	
+
+	my %whos_items = map { $_, 1 } @$items;
+
+	my @required = qw(eax ebx ecx edx esp ebp esi edi cs ds ss);
+	my @missing = ();
+
+	print "$who is missing ";
 	for my $item (@required) {
 		unless (exists $whos_items{$item}) {
-			print "$who missed $item\n";
+			print "$item ";
+			push @missing, $item;
 		}
 	}
-}
+	print "\b.\n";
 
-# same without shifts and hash
-sub chk_req_items {
-	my @required = qw(shapka polotentse tapki mylo mochalka voda);
-	
-	for my $item (@required) {
-		unless (grep { $item eq $_ } @{$_[1]}) {
-			print "$_[0] missed $item\n";
-		}
+	if (@missing) {
+		print "Adding @missing TO @$items FOR $who.\n";
+		push @$items, @missing;
 	}
 }
 
 
-my @professor = qw(bolt polotence tapki mylo mochalka);
-my $ref_prof = \@professor;
-chk_req_items("professor", $ref_prof);
+#for my $type (@all_regs) {
+#	my $regs_type = $$type[0];
+#	my $regs_ref = $$type[1];
+#	print "Processing \"$regs_type\" with \"@$regs_ref\"\n";
+#	chk_req($regs_type, $regs_ref);
+#}
+
+chk_req(@$_) for @all_regs;
