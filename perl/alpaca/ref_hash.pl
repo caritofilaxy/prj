@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use Carp qw(croak);
 
 my %svc = (
 	ftp=>'21/tcp',
@@ -36,3 +37,12 @@ foreach (keys %svc) {
 }
 
 
+
+sub is_hash_ref {
+	my $href = shift;
+	return eval { keys %$ref_type; 1 };
+}
+
+my %h=('aaa'=>'bbb'); my $r = \%h; my $ref_type = ref $r;
+print $ref_type . "\n";
+croak "I expected hash reference" unless is_hash_ref($ref_type);

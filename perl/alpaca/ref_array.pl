@@ -5,12 +5,12 @@ use warnings;
 
 my @gen_regs = qw(eax ebx ecx edx);	# array
 my $ref_regs = \@gen_regs;		# get ref 2 arr
-my $copy_ref = $ref_regs;	# copy ref (to the same array, that is, same memory location);
-print $copy_ref."\n"; 		# print address of array
-my @deref = @{$copy_ref};	# dereferencing array;
-my @deref2 = @$copy_ref; 	# same and here i can avoid braces;
-my $deref_slice = $$copy_ref[1]; # slice gets $ptrs[1];
-$$ref_regs[2] = "ecx";		# add element to array;
+my $copy_ref = $ref_regs;		# copy ref (to the same array, that is, same memory location);
+print "Address of array: $copy_ref.\n";# print address of array
+my @deref = @{$copy_ref};		# dereferencing array;
+my @deref2 = @$copy_ref; 		# same and here i can avoid braces;
+my $deref_slice = $$copy_ref[1]; 	# slice gets $ptrs[1];
+$$ref_regs[2] = "ecx";			# add element to array;
 print "@gen_regs\n";
 
 my @ptr_regs = qw(esp ebp);
@@ -18,6 +18,20 @@ my $ref_ptrs = \@ptr_regs;
 
 push @$ref_regs, @$ref_ptrs;
 print "@gen_regs\n";
+
+##############################################
+# in functions parameters are passed by reference;
+print "+"x32 . "\n";
+@gen_regs = qw(eax ebx ecx edx);	# array
+sub mod_gen_regs {
+	$_[0] = "flags";
+}
+
+print "Initial general registers array: @gen_regs\n";
+mod_gen_regs(@gen_regs);
+print "After modifying: @gen_regs\n";
+print "+"x32 . "\n";
+
 
 ##############################################
 my @regs_used = qw(ebx esi edi ebp);
@@ -78,5 +92,4 @@ my @this_prog_stat = stat($0);
 my $this_prog_stat_ref = \@this_prog_stat;
 my $inode = $this_prog_stat_ref->[1];
 print $0 . " inode is " . $inode . "\n";
-
 
