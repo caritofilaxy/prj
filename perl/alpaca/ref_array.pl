@@ -66,11 +66,17 @@ print $fst_index_reg."\n";					# print it.
 print "-"x32 . "\n";
 my $esi =  ${${$all_regs[2]}[1]}[0];
 print $esi . "\n";
-$esi =  $all_regs[2]->[1]->[0];
+#$esi =  $all_regs[2]->[1]->[0];
+#$esi = $all_regs_ref->[2]->[1]->[0];
+$esi = $all_regs_ref->[2][1][0];
+my @take_ptr_regs = @{$all_regs_ref->[1][1]};
 print $esi . "\n";
+print "@take_ptr_regs\n";
 
 # another example
 my @this_prog_stat = stat($0);
 my $this_prog_stat_ref = \@this_prog_stat;
 my $inode = $this_prog_stat_ref->[1];
 print $0 . " inode is " . $inode . "\n";
+
+
