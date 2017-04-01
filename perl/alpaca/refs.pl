@@ -87,6 +87,10 @@ sub print_hash {
 	my $hash_ref = shift;
 	
 	for my $item (keys %$hash_ref) {
-		printf("%-20s, %s\n", $item, @{$hash_ref->{$item}});
+		printf("%-20s: ", $item);
+		for (@{$hash_ref->{$item}}) {
+			print "$_ ";
+		}
+	print "\b.\n";
 	}
 }
