@@ -12,7 +12,7 @@ while($t !~ /^-?\d+$/) {
 	$t = <STDIN>;
 }
 
-my $temp = do {
+my $temp = do {;
 	if ($t<0) 	{ 'Cold' }
 	elsif ($t=0) 	{ 'Zero' }
 	else  		{ 'Warm' }
@@ -20,7 +20,7 @@ my $temp = do {
 
 print $temp."\n";
 
-my $file_contents = do {
+my $file_contents = do {;
 	local $/;
 	local @ARGV = ( $0 );
 	<>;
