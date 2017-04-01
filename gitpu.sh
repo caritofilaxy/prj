@@ -6,8 +6,6 @@ if [ $? -ne 0 ]; then
 	exit;
 fi
 
-#echo "Proceed"
-
 git add .
 git commit -m '-'
 git push

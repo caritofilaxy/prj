@@ -18,3 +18,5 @@ for my $tcputil (@netutils) {
 }
 print "\n";
 
+printf("%s: %s\n", "Netutils", @netutils);
+

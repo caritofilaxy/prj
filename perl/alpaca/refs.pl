@@ -54,30 +54,39 @@ my %all = (
 	jim => \@sillyadmin,
 );
 
-
-
 my $all_ref = \%all;
 
-my @jameslist = @{$all_ref->{james}};
-my $james_wget = ${$all_ref->{james}}[2];
-print "@jameslist\n";
-print "$james_wget\n";
+#my @jameslist = @{$all_ref->{james}};
+#my $james_wget = ${$all_ref->{james}}[2];
+#print "@jameslist\n";
+#print "$james_wget\n";
 
-
+print_hash($all_ref);
+print "+"x32 . "\n";
 chk_req($all_ref);
-
-
+print_hash($all_ref);
 
 
 sub chk_req {
-	my @netutils = qw(ping mtr dig host nmap ncat wget curl arp tc);
-	my @missing = ();
-
+	my @netutils = qw(firefox tcpdump bind ping mtr dig host nmap ncat wget curl arp tc);
+	print "All list: @netutils\n";
 	my $hash_ref = shift;
+	my @missing;
 
-		for my $admin (keys %$hash_ref) 
-			unless ( grep { $util eq $_ } @{$hash_ref->{$iter}} ) {
-				print "$i
-				push @miss
-		
+	for my $iter (keys %$hash_ref) {
+		@missing = ();
+		for my $util (@netutils) {
+			push @missing, $util unless ( grep { $util eq $_ } @{$hash_ref->{$iter}} );
+		}
+
+		push @{$hash_ref->{$iter}}, @missing if (@missing);
+	}
+}
+
+sub print_hash {
+	my $hash_ref = shift;
 	
+	for my $item (keys %$hash_ref) {
+		printf("%-20s, %s\n", $item, @{$hash_ref->{$item}});
+	}
+}
