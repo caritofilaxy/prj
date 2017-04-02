@@ -3,27 +3,24 @@
 use strict;
 use warnings;
 
-my $traffic;
-my $traffic_src;
+my $all = "**all machines**";
+my %total_bytes;
 
 while(<>) {
+	next if /^#/;
 	my ($src,$dst,$bytes) = split;
-	$traffic_src->{$src} += $bytes;
-	$traffic->{$src}->{$dst} +=$bytes;
+	$total_bytes{$src}{$dst} += $bytes;
+	$total_bytes{$src}{$all} += $bytes;
 	}
 
-my $sorted_vals = [ sort by_value_src keys %$traffic_src ];
-for my $k_src (@$sorted_vals) {
-	printf("%-30s: %-30d\n", $k_src, $traffic_src->{$k_src});
+my @sources = sort { $total_bytes{$b}{$all} <=> $total_bytes{$a}{$all} } keys %total_bytes;
+
+for my $src (@sources) {
+	my @dst = sort { $total_bytes{$src}{$b} <=> $total_bytes{$src}{$a} } keys %{ $total_bytes{$src} };
+	print "$src: $total_bytes{$src}{$all} bytes sent\n";
+	for my $dst (@dst) {
+		next if $dst eq $all;
+		print "$src => $dst: $total_bytes{$src}{$dst} bytes\n";
+	}
+	print "\n";
 }
-
-for my $k_src (sort keys %$traffic) {
-#	printf("%-30s: %-30d\n", $k_src, $traffic_src->{$k_src});
-	for my $k_dst (sort keys $traffic->{$k_src}) {
-		printf("%-30s => %-30s: %-30d\n", $k_src, $k_dst, $traffic->{$k_src}->{$k_dst});
-	}
-}
-
-sub by_value_src {
-	$traffic_src->{$b} <=> $traffic_src->{$a};
-	}
