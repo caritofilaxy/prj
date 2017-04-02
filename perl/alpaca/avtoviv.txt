@@ -1,0 +1,15 @@
+dnsadmin
+	dig
+	host
+	bind
+tcpadmin
+	tcpdump
+	nmap
+	wget
+	curl
+sillyadmin
+	ping
+	firefox
+tcpadmin
+	ncat
+	mtr
