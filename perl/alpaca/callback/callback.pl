@@ -23,12 +23,21 @@ my @root_dir = "/home/aesin/git/prj/perl";
 #terms, a closure is a subroutine that references a lexical variable that has gone out of
 #scope.
 
-my $callback;
-{
-	my $count = 0;
-	$callback = sub { print  ++$count, ": $File::Find::name\n" };
-}										# at this moment $count eliminated.
+#my $callback;
+#{
+#	my $count = 0;
+#	$callback = sub { print  ++$count, ": $File::Find::name\n" };
+#}										# at this moment $count eliminated.
+#find($callback, @root_dir);
+
+sub create_find_callback {
+	my $count=0;
+	return sub { print ++$count, ":$File::Find::name\n" };
+}
+
+my $callback = create_find_callback();
 find($callback, @root_dir);
+
 
 
 
