@@ -36,7 +36,8 @@ sub create_find_callback {
 }
 
 my $callback = create_find_callback();
-find($callback, @root_dir);
+#find($callback, @root_dir);
+find($callback, '/bin');
 
 
 
