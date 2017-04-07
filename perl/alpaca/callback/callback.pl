@@ -30,17 +30,19 @@ my @root_dir = "/home/aesin/git/prj/perl";
 #}										# at this moment $count eliminated.
 #find($callback, @root_dir);
 
-sub create_find_callback {
-	my $count=0;
-	return sub { print ++$count, ":$File::Find::name\n" };
-}
+###################################################
 
-my $callback1 = create_find_callback();
-my $callback2 = create_find_callback();
+#sub create_find_callback {
+#	my $count=0;
+#	return sub { print ++$count, ":$File::Find::name\n" };
+#}
+
+#my $callback1 = create_find_callback();
+#my $callback2 = create_find_callback();
 #find($callback, @root_dir);
-find($callback1, '/boot');
-find($callback2, '/mnt');
+#find($callback1, '/boot');
+#find($callback2, '/mnt');
 
-
+####################################################
 
 
