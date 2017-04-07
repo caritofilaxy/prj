@@ -44,5 +44,31 @@ my @root_dir = "/home/aesin/git/prj/perl";
 #find($callback2, '/mnt');
 
 ####################################################
+#
+#sub create_find_callback_that_sums_the_size {
+#	my $total_size = 0;
+#	return sub {
+#		if (@_) {
+#			return $total_size;
+#		} else {
+#			$total_size += -s if -f;
+#		}
+#	};
+#}
+#
+#my $callback =  create_find_callback_that_sums_the_size();
+#find($callback,@root_dir);
+#my $total_size = $callback->('dummy');
+#print "total size of @root_dir is $total_size\n";
+#
+######################################################
 
+sub create_find_callback_that_sums_size {
+	my $total_size = 0;
+	return (sub { $total_size += -s if -f}, sub {return $total_size });
+}
 
+my ($count_em, $get_results) = create_find_callback_that_sums_size();
+find($count_em, @root_dir);
+my $total_size = &$get_results();
+print "Total size is $total_size\n";
