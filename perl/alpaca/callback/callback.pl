@@ -35,9 +35,11 @@ sub create_find_callback {
 	return sub { print ++$count, ":$File::Find::name\n" };
 }
 
-my $callback = create_find_callback();
+my $callback1 = create_find_callback();
+my $callback2 = create_find_callback();
 #find($callback, @root_dir);
-find($callback, '/bin');
+find($callback1, '/boot');
+find($callback2, '/mnt');
 
 
 
