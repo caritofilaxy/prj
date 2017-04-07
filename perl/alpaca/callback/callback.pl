@@ -37,7 +37,10 @@ sub create_find_callback {
 
 my $callback = create_find_callback();
 #find($callback, @root_dir);
+print "my /bin:\n";
 find($callback, '/bin');
+print "my /lib\n";
+find($callback, '/lib');
 
 
 
