@@ -79,6 +79,8 @@ sub create_find_callback_that_sums_size {
 #my $total_size = &$get_results();
 #print "Total size is $total_size\n";
 
+use Data::Dumper;
+
 my %subs;
 for my $dir (qw(/bin /etc /boot)) {
 	my ($targets, $totals) = create_find_callback_that_sums_size();
@@ -86,11 +88,13 @@ for my $dir (qw(/bin /etc /boot)) {
 	$subs{$dir}{TOTALS} = $totals;
 }
 
-for (keys %subs) {
-	find($subs{$_}{TARGETS}, $_);
-}
+print Dumper(%subs);
 
-for (sort keys %subs) {
-	my $sum = $subs{$_}{TOTALS}->();
-	print "$_: $sum\n";
-}
+#for (keys %subs) {
+#	find($subs{$_}{TARGETS}, $_);
+#}
+
+#for (sort keys %subs) {
+#	my $sum = $subs{$_}{TOTALS}->();
+#	print "$_: $sum\n";
+#}
