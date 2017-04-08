@@ -65,10 +65,16 @@ my @root_dir = "/home/aesin/git/prj/perl";
 
 sub create_find_callback_that_sums_size {
 	my $total_size = 0;
-	return (sub { $total_size += -s if -f}, sub {return $total_size });
+	return (sub { my $target = $File::Find::name; 
+			if (-f $target and $target =~ "en") {
+				print $target , ": ", -s $target, "\n";
+				$total_size += -s $target;
+				}
+			}, 
+		sub {return $total_size });
 }
 
-my ($count_em, $get_results) = create_find_callback_that_sums_size();
-find($count_em, @root_dir);
+my ($targets, $get_results) = create_find_callback_that_sums_size();
+find($targets, @root_dir);
 my $total_size = &$get_results();
 print "Total size is $total_size\n";
