@@ -39,10 +39,14 @@ print 'Port of http service $netsvc->{http} is ', $netsvc->{http}, "\n\n";
 ###############################################
 print "## sub reference ##\n";
 
-my $lowercaser = sub {
-	my $arg = shift;
-	lc($arg);
-};
+#my $lowercaser = sub {
+#	my $arg = shift;
+#	lc($arg);
+#};
+#
+#print $lowercaser->("HeLLo"), "\n";
+#
+my $add_sub = sub { $_[0] + $_[1] };
+print $add_sub->(1,2), "\n";
 
-print $lowercaser->("HeLLo"), "\n";
-	
+
