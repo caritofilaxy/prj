@@ -6,7 +6,7 @@ use warnings;
 my $extract = vec("have a nice day", 3, 8);
 printf("got dec ascii [%s] which is char [%s]\n", $extract, chr($extract));
 
-
+{
 # vec is lvalue
 my $bit_string = "Have a nice day";
 vec($bit_string, 13, 8) = ord('i');
@@ -18,7 +18,7 @@ say $bit_string;
 # e.g we can make first char lowercased. bits of every byte counts from right
 # to left as little-endian arch.
 
-my $bit_string = "perl";
+$bit_string = "perl";
 
 # p		e		r		l
 # 01110000	01100101	01110010	01101100
@@ -35,3 +35,17 @@ vec($bit_string, 21, 1) = 0;
 say $bit_string;
 vec($bit_string, 29, 1) = 0;
 say $bit_string;
+}
+##################################################
+{
+	my @chars = qw(b i o p e r l 1 2 3);
+	my $string = '';
+
+	for (0..$#chars) {
+		vec($string, $_, 8) = ord($chars[$_]);
+	}
+
+	say "[$string]";
+}
+
+	
