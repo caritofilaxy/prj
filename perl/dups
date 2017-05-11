@@ -1,0 +1,20 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+
+my %duplicates;
+while (<DATA>) {
+    print if !defined $duplicates{$_};
+    $duplicates{$_}++;
+}
+
+__DATA__
+The quick red fox jumped over the lazy brown dog.
+Time flies like an arrow, fruit flies like a banana.
+Time flies like an arrow, fruit flies like a banana.
+Now is the time for all good men to come to the aid of their party.
+The quick red fox jumped over the lazy brown dog.
+The quick red fox jumped over the lazy brown dog.
+Time flies like an arrow, fruit flies like a banana.
+Now is the time for all good men to come to the aid of their party.
+Now is the time for all good men to come to the aid of their party.
