@@ -91,5 +91,5 @@ print "@take_ptr_regs\n";
 my @this_prog_stat = stat($0);
 my $this_prog_stat_ref = \@this_prog_stat;
 my $inode = $this_prog_stat_ref->[1];
-print $0 . " inode is " . $inode . "\n";
-
+#print $0 . " inode is " . $inode . "\n";
+print join(" ", $0,"inode is",$inode,"\n");
