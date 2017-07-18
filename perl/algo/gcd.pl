@@ -3,6 +3,10 @@
 use v5.022;
 use warnings;
 
+my $argc = @ARGV;
+
+die "gcd int int" unless $argc == 2;
+
 sub gcd($$) {
 	my ($d1, $d2) = @_;
 	my $r = $d1 % $d2;
@@ -18,7 +22,5 @@ sub gcd($$) {
 	}
 }
 
-my $d1 = 27; my $d2 = 18;
-
-say "GCD of $d1 and $d2 is ", gcd($d1,$d2);
+say "GCD of $ARGV[0] and $ARGV[1] is ", gcd($ARGV[0],$ARGV[1]);
 

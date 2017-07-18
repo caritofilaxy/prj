@@ -15,10 +15,10 @@ use LWP::UserAgent;
 
 my $ua = LWP::UserAgent->new();
 $ua->agent("mr. Robot");
-my $req = HTTP::Request->new(GET => 'http://www.communigate.com/ru/main/purchase/scriptrepository.html');
+my $req = HTTP::Request->new(GET => 'https://icpc.baylor.edu/worldfinals/problems');
 my $res = $ua->request($req);
 my @lines = split(/\n/, $res->content);
 die "URL can not be reached!" unless $res->code == 200;
 for (@lines) {
-	print "http://www.communigate.com$1\n" if (m#A HREF="(.+?\.pl)"#);
+	print "http://www.communigate.com$1\n" if (m#A HREF="(.+?\.pdf)"#);
 }
