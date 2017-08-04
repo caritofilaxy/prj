@@ -37,7 +37,7 @@ begin
 	end;
 end;
 
-procedure decrypt_line(var d:string; offset: integer);
+procedure decrypt_line(var d:string);
 var
 	i: integer;
 begin
@@ -47,28 +47,17 @@ end;
 
 { ---=== decryption part ===--- }
 
-{ ---=== file encryption ===--- }
-procedure process_file(oper: char);
-begin
-	if (oper='e') then begin
-		writeln('Encryption operation selected');
-	end else begin
-		writeln('Decryption operation selected');
-	end;
-end;
 
 { ---=== main ===--- }
 
 var
-	c: char;
+	s: string;
 
 begin
-	write('[e]ncrypt/[d]ecrypt: ');
-	repeat
-	readln(c);
-		if ((c='e') or (c='d')) then
-			process_file(c)
-		else 
-			write('select ''''e'''' or ''''d'''': ')
-	until ((c = 'e') or (c = 'd'));
+	while not eof(Input) do begin
+		readln(Input, s);
+		decrypt_line(s);
+		writeln(s);
+	end;
+end.
 end.
