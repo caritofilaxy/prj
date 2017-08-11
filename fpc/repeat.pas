@@ -4,10 +4,11 @@ var
 
 begin
 	repeat
-		write('Enter positive odd value: ');
-		readln(h)
-	until (h>0) and (h mod 2 = 1);
-	{until (h>0) or (h mod 2 = 1);}
+		write('?: '); readln(h);
+		case h of
+			0: writeln('f');
+			1: writeln('t');
+			else writeln('u');
+		end;
+	until ((h = 0) or (h = 1));
 end.
-
-
