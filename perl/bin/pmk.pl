@@ -116,5 +116,6 @@ if ($makefile) {
 open(my $sb, ">", "$name/$name.$ext") || die "cant open $name/$name.$ext";
 print $sb $sandbox;
 close($sb);
-chmod 0755, "$name/$name.$ext" if ($lang eq 'perl') 
+chmod 0755, "$name/$name.$ext" if ($lang eq 'perl') ;
+exec "vim $name/$name.$ext";
 
