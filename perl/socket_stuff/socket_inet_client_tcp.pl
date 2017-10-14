@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 #tcpclient.pl
 
+use strict;
+use warnings;
 use IO::Socket::INET;
 
 # flush after every write
@@ -19,7 +21,7 @@ $socket = IO::Socket::INET->new(
 print "TCP Connection Success.\n";
 
 # read the socket data sent by server.
-$data = <$socket>;
+my $data = <$socket>;
 # we can also read from socket through recv()  in IO::Socket::INET
 # $socket->recv($data,1024);
 print "Received from Server : $data\n";

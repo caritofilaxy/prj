@@ -14,6 +14,8 @@ $paddr   = sockaddr_in($port, $iaddr);
 $proto   = getprotobyname("tcp");
 socket(SOCK, PF_INET, SOCK_STREAM, $proto)  || die "socket: $!";
 connect(SOCK, $paddr)               || die "connect: $!";
+
+
 while ($line = <SOCK>) {
 	print $line;
 }

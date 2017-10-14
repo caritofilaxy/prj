@@ -1,16 +1,14 @@
 #!/usr/bin/perl
-#tcpserver.pl
 
+use strict;
+use warnings;
 use IO::Socket::INET;
 
-# flush after every write
 $| = 1;
 
 my ($socket,$client_socket);
-my ($peeraddress,$peerport);
+my ($peer_address,$peer_port,$data);
 
-# creating object interface of IO::Socket::INET modules which internally does 
-# socket creation, binding and listening at the specified port address.
 $socket = IO::Socket::INET->new(
 	LocalAddr => '127.0.0.1',
 	LocalPort => '5000',
@@ -23,13 +21,13 @@ print "server waiting for client connection on port 5000\n";
 
 for (;$client_socket = $socket->accept();) {
 	# waiting for new client connection.
-	#$client_socket = $socket->accept();
+	# $client_socket = $socket->accept();
 
 	# get the host and port number of newly connected client.
 	$peer_address = $client_socket->peerhost();
 	$peer_port = $client_socket->peerport();
 
-	print "Accepted New Client Connection From : $peeraddress, $peerport\n ";
+	print "Accepted New Client Connection From : $peer_address, $peer_port\n ";
 
 	# write operation on the newly accepted client.
 	$data = "DATA from Server";
@@ -45,7 +43,3 @@ for (;$client_socket = $socket->accept();) {
 }
 
 $socket->close();
-
-# http://www.thegeekstuff.com/2010/07/perl-tcp-udp-socket-programming
-
-
