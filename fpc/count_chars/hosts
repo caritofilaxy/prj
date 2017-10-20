@@ -1,0 +1,26 @@
+### ###
+127.0.0.1	localhost graytheme.local switcher.pbx webpsgi.local tutor.local
+127.0.1.1	stretinsky
+#81.211.127.110	www.softland.ru softland.ru mail
+192.168.12.141	www.softland.ru softland.ru mail
+81.211.127.109	bb-dr #deklarant.pro security.deklarant.pro
+80.249.183.244	phpmyadmin.deklarant.pro
+192.168.12.150	ise deklarant-new.softland.ru
+192.168.12.201	bb
+192.168.12.129	mx
+192.168.12.125	pbx
+192.168.12.131	hp01
+192.168.12.130	warden
+192.168.12.140	hp02 svn.softland.ru
+92.63.105.28	cnc
+80.79.248.110	vm.softland.ru
+178.252.81.35   vostok dl.vostok
+192.168.56.103	vbox
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
