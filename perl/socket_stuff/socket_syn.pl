@@ -40,7 +40,8 @@ sub main
      
 #    while(1)
 #    {
-        send($sock , $packet , 0 , $destination)
+#        send($sock , $packet , 0 , $destination)
+        send($sock , $packet , 0)
 #            or die $!;
 #    }
 }
