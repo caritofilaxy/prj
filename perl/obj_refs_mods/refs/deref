@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my @required = qw(preserver sunscreen water_bottle jacket);
+
+my @skipper = qw(blue_shirt hat jacket preserver sunscreen);
+my @skipper_with_name = ("skipper", \@skipper);
+my @gilligan = qw(red_shirt hat lucky_socks water_bottle);
+my @gilligan_with_name = ("gilligan", \@gilligan);
+my @professor = qw(sunscreen water_bottle slide_rule batteries radio);
+my @professor_with_name = ("professor", \@professor);
+
+my @all_with_names = (\@skipper_with_name,\@gilligan_with_name,\@professor_with_name);
+
+sub check_req_items {
+    my $who = shift;
+    my $items = shift;
+    for my $item (@required) {
+#        unless (grep { $_ eq $item } @{$items}) { print "$who is missing $item\n" };
+         unless (grep { $_ eq $item } @$items) { print "$who is missing $item\n" };
+    }
+}
+
+
+check_req_items("gilligan", \@gilligan);
+
+my $ref2sk = \@skipper;
+check_req_items("skipper", $ref2sk);
+
+print "========================\n";
+
+for my $person (@all_with_names) {
+    my $who = $$person[0];
+    my $provision_ref = $$person[1];
+    check_req_items($who, $provision_ref);
+}
+
+print "========================\n";
+
+check_req_items(@$_) for @all_with_names;
+print "========================\n";
+
+my $root = \@all_with_names;
+#print "Gilligans first item: $root->[2]->[1]->[0]\n";
+print "Gilligans first item: $root->[2][1][0]\n";

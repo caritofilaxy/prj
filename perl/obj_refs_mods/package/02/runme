@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Monthrename;
+
+my @day = qw(ark dip wap sen pop sep kir);
+sub n2d { my $num = shift @_; $day[$num]; }
+my @month = qw(diz pod bod rod sip wax lin sen kun fiz nap dep);
+
+print n2d(3);
+
+print Monthrename::m2h($month[5], @month);

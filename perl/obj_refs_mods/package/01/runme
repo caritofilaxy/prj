@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use pkg01;
+use pkg02;
+
+pkg01::pkg_say();
+pkg02::pkg_say();
