@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+sub Cow::speak {
+    print "Cow goes moo!\n";
+}
+
+sub Horse::speak {
+    print "Horse goes neigh!\n";
+}
+
+sub Sheep::speak {
+    print "Sheep goes baaah!\n";
+}
+
+#Cow::speak;
+#Horse::speak;
+#Sheep::speak;
+
+#my @pasture = qw(Cow Cow Horse Sheep Sheep);
+#for my $beast (@pasture) {
+#    &{$beast."::speak"};
+#}
+
+#Cow->speak;
+#Horse->speak;
+#Sheep->speak;
+
+my @pasture = qw(Cow Cow Horse Sheep Sheep);
+for my $beast (@pasture) {
+    $beast->speak;
+}
+
+

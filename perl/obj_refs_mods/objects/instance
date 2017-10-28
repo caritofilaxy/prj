@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+{ package Animal;
+    sub speak {
+    my $class = shift;
+    print "a $class goes ", $class->sound, "!\n"
+    }
+}
+{ package Horse;
+    @Horse::ISA = qw(Animal);
+    sub sound { "neigh" }
+    sub name {
+        my $self = shift;
+        $$self;
+    }
+}
+
+
+my $name = "Mr. Ed";
+my $tv_horse = \$name;
+bless $tv_horse, "Horse";
+
+my $noise = $tv_horse->sound;
+
+print $tv_horse->name, " says ", $tv_horse->sound, "\n";
+
+#prinf ref($tv_horse), "\n";

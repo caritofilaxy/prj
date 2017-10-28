@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $planets = [ qw(Mercury Venus Earth Mars Jupiter Saturn Uran Neptune Pluto) ];
+
+sub sun {
+    my ($planet) = @_;
+    print "Im shining for $planet\n";
+    }
+
+my $sun_ref = \&sun;
+
+for (0..$#{$planets}) {             # dereferencing arrany and get last index
+    $sun_ref->($planets->[$_]);
+    }
