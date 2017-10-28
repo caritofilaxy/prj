@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+$symref = "set";
+
+sub set {
+    print "Im sub set, args are: @_\n";
+}
+
+# hash
+$symref->{type} = "discrete";
+print "$_ : $set{$_}\n" for (keys %set);
+$set{type} = "continuous";
+print "$_ : $set{$_}\n" for (keys %set);
+
+# array
+$symref->[2] = "third";
+print $set[2], "\n";
+
+# sub
+$symref->("barata");

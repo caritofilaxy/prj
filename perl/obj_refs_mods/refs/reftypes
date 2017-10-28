@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings
+
+# $ref2arr->[index];
+# $value = $ref2hash->{key};
+# $ref2sub->(params);
+
+# hash reference 
+
+my %srv = (
+    http => 80,
+    smtp => 25,
+    pop => 110,
+    ssh => 22,
+    https => 443,
+);
+
+my $anon_srv = {
+     http => 80,
+     smtp => 25,
+     pop => 110,
+     ssh => 22,
+     https => 443,
+};
+
+
+my $srv_ref = \%srv;
+print "anon_srv type is a ", ref($anon_srv), " and address: ", $anon_srv, "\n";
+print "http port is $srv_ref->{http}\n";
+print "https port is $anon_srv->{https}\n";

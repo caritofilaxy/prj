@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+
+#use strict;
+use warnings;
+
+{
+    my $name = "Klaatu";
+    sub print_my_name { print "Im ", $name, "\n"; };
+}
+
+print_my_name();
+
+sub hop_along {
+    my ($from, $to, $step) = @_;
+    my $next = $from - $step;
+    my $closure_ref = sub {
+        $next+=$step;
+        return if $next > $to;
+        $_[0] = $next;
+        return 1;
+    };
+    return $closure_ref;
+}
+
+my $iterator = hop_along 1, 100, 7;
+while ($iterator->($next)) {
+    print "$next ";
+}

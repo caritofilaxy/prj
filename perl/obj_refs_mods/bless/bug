@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Bug;
+
+my $id = 0001;
+my $type = "fatal";
+my $descr = "not compile";
+
+my $nextbug = Bug->new($id, $type, $descr);
+
+$nextbug->print_me();

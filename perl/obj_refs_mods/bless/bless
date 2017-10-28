@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $nextbug = {
+    _id => 0001,
+    _type => "fatal",
+    _descr => "app not compile"
+};
+
+print ref($nextbug), "\n";
+bless $nextbug, "Bug";
+print ref($nextbug), "\n";

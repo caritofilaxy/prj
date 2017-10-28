@@ -24,7 +24,4 @@ my $tv_horse = \$name;
 bless $tv_horse, "Horse";
 
 my $noise = $tv_horse->sound;
-
 print $tv_horse->name, " says ", $tv_horse->sound, "\n";
-
-#prinf ref($tv_horse), "\n";
