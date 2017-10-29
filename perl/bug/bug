@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Bug;
+
+my $bug = Bug->new(0001,"fatal","not compile"); 
+$bug->print_me();

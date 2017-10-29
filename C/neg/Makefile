@@ -1,5 +1,5 @@
-NAME := dec2bin
-SOURCE := $(NAME).c env.c
+NAME := neg
+SOURCE := $(NAME).c
 OBJFILE := $(NAME).o
 
 make:
