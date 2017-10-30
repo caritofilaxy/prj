@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use CD::Music;
+
+my $kino_45 = CD::Music->new(name=>45, artist=>"kino");
+my $kish_48 = CD::Music->new();
+print CD::Music::get_count(), "\n";
