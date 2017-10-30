@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+require "req01.pl";
+require "req02.pl";
+
+init01();
+init02();

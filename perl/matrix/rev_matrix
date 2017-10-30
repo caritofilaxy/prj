@@ -1,0 +1,44 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Time::HiRes qw(gettimeofday tv_interval);
+
+my @matrix;
+my $size = 1000;
+
+init_matrix(\@matrix);
+my $t0 = [gettimeofday()];
+reverse_matrix(\@matrix);
+
+my $elapsed = tv_interval ($t0, [gettimeofday]);
+print $elapsed."\n";
+
+sub init_matrix {
+	my ($matr) = @_;	
+	for (my $row = 0; $row < $size; $row++) {
+		for (my $col = 0; $col<$size; $col++) {
+			$matr->[$row][$col] = 1 + int(rand(19));
+		}
+	}
+}
+
+sub print_matrix {
+	my ($matr) = @_;	
+	for (my $row = 0; $row < $size; $row++) {
+		for (my $col = 0; $col<$size; $col++) {
+			printf("%.2f ", $matr->[$row][$col]);
+		}
+	print "\n";
+	}
+print "\n\n";
+}
+
+sub reverse_matrix {
+	my ($matr) = @_;	
+	for (my $row = 0; $row < $size; $row++) {
+		for (my $col = 0; $col<$size; $col++) {
+			 $matr->[$row][$col] = 1/$matr->[$row][$col];
+		}
+	}
+}

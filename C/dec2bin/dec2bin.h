@@ -1,4 +1,4 @@
-void init_zero(char *);
-void reverse(char *);
+void init(char *);
 void fill(char *, int);
+void reverse(char *);
 void echo(char *);

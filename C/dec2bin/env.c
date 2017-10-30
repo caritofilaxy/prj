@@ -3,7 +3,7 @@
 #include "size.h"
 
 
-void init_zero(char *m) {
+void init(char *m) {
 	int i;
 	for (i=0;i<SZ;i++)
         *(m+i) = '\0';
@@ -24,7 +24,7 @@ void fill(char *m, int d) {
 void reverse(char *m) {
 	int i,k;
 	char tmp[SZ];
-	init_zero(tmp);
+	init(tmp);
 
 	for(i=SZ-1,k=0;i>=0;i--,k++)
 		*(tmp+k) = *(m+i);

@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use CD::Music;
+
+my $cd = CD::Music->new("Cnon in D","Pachebel","Borin bri","1234-04235643-1",1,8,8,5.0);
+print $cd->get_name, "\n";
+
+printf("Room %s, shelf %s\n", $cd->get_location);
+$cd->set_location(5,3);
+printf("Room %s, shelf %s\n", $cd->get_location);

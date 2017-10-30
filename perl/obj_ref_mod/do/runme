@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+do "say_func.pl";
+die $@ if $@;
+do "think_func.pl";
+die $@ if $@;
+
+say_what("asta la vista");
+think_what("fu asshole");

@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Dumper;
+
+my $section;
+my $config = { };
+
+open(my $fh, "<", "config");
+while(<$fh>) {
+	next if /^$/;
+	if (/^(\S.*)/) {
+		$section = $1;
+		$config->{$section} = { };
+	} else {
+		s/^\s+//;
+		s/\s+$//;
+		my ($param, $value) = split(/\s+/, $_);
+		$config->{$section}->{$param} = $value;
+	}
+}
+
+print Dumper($config);

@@ -1,0 +1,12 @@
+logging
+	log_level	4
+	log_file	/var/log/somelog
+
+connection
+	proto	tcp
+	server	www.server.com
+	port	8080
+
+credentials
+	login		somename
+	password	somepassword
