@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Net::OpenSSH;
+
+my $bbdr = Net::OpenSSH->new("bb-dr",port=>58254);
+my @mdstat_lines = $bbdr->capture("cat /proc/mdstat");
+
+print for (@mdstat_lines);

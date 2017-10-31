@@ -6,17 +6,23 @@ use warnings;
 use Net::Ping;
 use Socket;
 
-sub check {
-    my $text;
-    my ($name,$ipaddr,$port) = @_;
+sub srv_avail_table {
+	my (%targets) = @_;
+	my $text = "<table border>";
+	$text .= "<tr><th>host</th><th>service</th><th>status</th></tr>";
     my $p = Net::Ping->new();
-    $p->port_number($port);
-    my ($srvname,undef,undef,undef) = getservbyport($port, "tcp");
-    $text = "service <b>$srvname</b> at $ipaddr:$port is ";
-    $text .= $p->ping($ipaddr) ? "alive" : "<b>dead</b>";
-    $text .= "<br>";
-    $p->close();
-    return $text;
+	for my $host (keys %targets) {
+		for my $port (@{$targets{$host}}) {
+			$p->port_number($port);
+			my ($srv,undef,undef,undef) = getservbyport($port,"tcp");
+	    	$text .= "<tr><th>$host</th><th>$srv</th><th>";
+    		$text .= $p->ping($host) ? "alive" : "<b>dead</b>";
+    		$text .= "</th><tr>";
+		}
+	}
+	$p->close();
+	$text .= "</table>";
+	return $text;
 }
-
+		
 1;

@@ -1,5 +1,21 @@
 #!/usr/bin/perl
 
-use Handler;
+use strict;
+use warnings;
+use Socket;
+use Net::Ping;
 
-print Handler::check("192.168.12.201","22");
+my %targets = (
+        sl_site => [ qw(http smtp pop3 imap) ],
+        dkl => [ qw(smtp pop3 https) ],
+        dkl_bb => [ qw(smtp pop3 https) ],
+);
+
+print "<table border>";
+my $p = Net::Ping->new();
+for my $host (keys %targets) {
+	for my $svc (@{$targets{$key}}) {
+		print "<tr><th>$host</th><th>$port</th><th>
+		$p->port_number(get
+	}
+}

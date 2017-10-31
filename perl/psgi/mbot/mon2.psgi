@@ -4,6 +4,13 @@ use Plack::Request;
 use Plack::Builder;
 use Handler;
 
+my %targets = (
+ 	sl_site => [ 80, 110, 143, 21,  ],
+	dkl => [ 443, 80, 25, 110 ],
+	fail => [ 443, 80, 25, 110 ],
+);
+
+
 
 my $check = sub {
     my $env = shift;
@@ -11,12 +18,12 @@ my $check = sub {
     my $res = $req->new_response(200);
     my $params = $req->parameters();
     
-    my $body = "<html><body>";
-    $body .= Handler::check("websrv","192.168.12.141","80");
-    $body .= Handler::check("bb","192.168.12.201","25");
-    $body .= Handler::check("mx","192.168.12.129","3128");
-    $body .= Handler::check("mx","192.168.12.130","25");
+    my $body = '<html><body>';
+    $body .= Handler::srv_avail_table(%targets);
     $body .= "</html></body>";
+	$body =~ s/dkl/deklarant.pro/g;
+	$body =~ s/fail/deklarant.pro failover/g;
+	$body =~ s/sl_site/softland.ru/g;
     
     $res->body($body);
     return $res->finalize();
