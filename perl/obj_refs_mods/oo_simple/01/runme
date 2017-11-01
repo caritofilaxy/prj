@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Objecttt;
+
+my $color = "red";
+
+my $o = Objecttt->new($color);
+my $cur_color = $o->get_color();
+print "Color: ", $cur_color, "\n";
+$o->set_color("brown");
+$cur_color = $o->get_color();
+print "Color: ", $cur_color, "\n";
