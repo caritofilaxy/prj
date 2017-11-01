@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Planets;
+
+my $mercury = Planets->new(dist2sun=>58,radius=>2440);
+$mercury->print_me();
+$mercury->set_dist2sun(42);
+$mercury->print_me();

@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Net::OpenSSH;
+
+my $host = "bb-dr";
+
+my $ssh = Net::OpenSSH->new($host);
+$ssh->error and
+  die "Couldn't establish SSH connection: ". $ssh->error;
+
+$ssh->system("ls /var/vmail") or
+  die "remote command failed: " . $ssh->error;
+
+
