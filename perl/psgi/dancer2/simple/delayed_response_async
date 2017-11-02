@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+use Dancer2;
+
+get '/status' => sub {
+
+            delayed {
+                response_header 'X-Foo' => 'Bar';
+
+                # flush headers (in case of streaming)
+                flush;
+
+                # send content to the user
+                content 'Hello, world!';
+
+                # you can write more content
+                # all streaming
+                content 'Hello, again!';
+
+                # when done, close the connection
+                done;
+
+                # do whatever you want else, asynchronously
+                # the user socket closed by now
+                ...
+            };
+        };
