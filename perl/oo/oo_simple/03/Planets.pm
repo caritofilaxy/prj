@@ -24,6 +24,5 @@ sub set_dist2sun {
     $self->{_dist2sun} = $dist if $dist;
 }
 
-
 1;
 

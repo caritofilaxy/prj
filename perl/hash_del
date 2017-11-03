@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+my $hash = {
+	http => 80,
+	smtp => 25,
+	ssh => 22,
+	irc => 6667,
+};
+
+my $deleted = $hash->{http};
+
+while (my ($k,$v) = each %$hash) {
+	print "$k => $v\n";
+}
+
+print "====\n";
+print $deleted, "\n";

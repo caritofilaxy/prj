@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Planet;
+
+my $mercury = Planet->new("Mercury", 7, 2440);
+$mercury->print_me();
+$mercury->goto_sun();
