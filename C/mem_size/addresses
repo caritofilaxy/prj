@@ -1,0 +1,13 @@
+(gdb) print &i01
+$10 = (short *) 0xbffff5b4
+(gdb) print &i02
+$11 = (unsigned int *) 0xbffff5b0
+(gdb) print &i03
+$12 = (int *) 0xbffff5ac
+(gdb) print &i04
+$13 = (unsigned long *) 0xbffff5a8
+(gdb) print &i05
+$14 = (long *) 0xbffff5a4
+(gdb) print &i00
+$15 = (unsigned short *) 0xbffff5b6
+x/24xb 0xbffff5a4
