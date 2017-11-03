@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use Carp;
 
+STDOUT->autoflush(1);
+
 sub new {
 	Carp::carp("Options should be array, not anything else") if (ref($_[1]) eq 'ARRAY');
 	my ($class, @args) = @_;

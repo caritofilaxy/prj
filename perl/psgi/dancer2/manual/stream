@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+use Dancer2;
+
+get '/status' => sub {
+    delayed {
+        response_header 'X-Foo' => 'Bar';
+        # flush headers (in case of # streaming)
+        flush;
+        content 'Hello, world!';
+        content 'Hello, again!';
+        
+        done;
+    };
+};
+
+start;

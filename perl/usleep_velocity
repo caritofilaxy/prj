@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Time::HiRes;
+
+STDOUT->autoflush(1);
+
+my $d = 20;
+my $msec = 2000000;
+
+
+while ($d-- > 1) {
+    print $d;
+    Time::HiRes::usleep($msec);
+    $msec -= 100000;
+    print chr(8)x2;
+}
+
+print "Kaboom\n";
+
