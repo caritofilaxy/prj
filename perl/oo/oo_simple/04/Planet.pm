@@ -1,5 +1,7 @@
 package Planet;
 
+# this is an example of separate initialization function from constructor
+
 use strict;
 use warnings;
 use Carp;
