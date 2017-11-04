@@ -31,19 +31,32 @@ int main(void) {
  *
  *
  *
- *
- *
- *
- *
+ */
+
+/*		int val; */
 		struct fraction pi;
 		pi.num = 22;
 		pi.denum = 7;
 
 		((struct fraction *)&(pi.denum))->num = 12;
-		((struct fraction *)&(pi.num))->num = 33;
+		((struct fraction *)&(pi.denum))->denum = 33;
 
 		printf("%i\n", pi.denum);
+
+
+
 		
+		printf("%i\n", (&pi)[1].num); /*  we can look at it as array of blocks with size equal to 
+										 struct fraction. this is 2nd block and num is 1st value */
+		
+		(&pi.num)[2] = 44;
+
+		printf("%i\n", (&pi)[1].num); 
+		
+
+/* 		val = ((struct fraction *)(&pi.denum))[0].denum;
+ *		printf("should be 33: %i\n", val);
+ */
 
 		return 0;
 }
