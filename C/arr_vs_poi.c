@@ -22,10 +22,21 @@ int main() {
 
 int main(void) {
 
-	   char charr[5];
-	   int intarr[5];
+	   short arr[5];
 	   
-	   *(charr+3) = 'A';
-	   *(intall+3) = 44;
 
+	   *(arr) = 16;
+	   *(arr+1) = 32;
+	   *(arr+2) = 64;
+	   *(arr+3) = 128;
+	   *(arr+4) = 255;
+
+		printf("%i\n", arr[3]);
+
+		*((char *)arr+7) = 0x2;
+
+		printf("%i\n", *((short *)arr+3));
+
+		return 0;
+}
 		
