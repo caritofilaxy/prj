@@ -21,6 +21,7 @@ sub STORE {
 }
 
 
+package main;
 tie my $avogadro, Tie::Constvar, 6.02252e23;
 
 print $avogadro, "\n";
