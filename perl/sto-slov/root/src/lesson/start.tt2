@@ -1,0 +1,3 @@
+<!-- START_LESSON_PAGE_MARKER -->
+[% META title = 'Начать урок' %]
+[% form %]

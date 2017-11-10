@@ -1,0 +1,11 @@
+<!-- MY_ACCOUNT_PAGE_MARKER -->
+[% META title = 'Мой аккаунт' %]
+
+На этой странице вы можете настроить параметры своего аккаунта:
+<div class="extra_navigation_links">
+<ul>
+    <li><a href="[% c.uri_for('/user/change_password') %]">Изменить пароль</a></li>
+    <li><a href="[% c.uri_for('/user/change_email') %]">Изменить Email</a></li>
+    <li><a href="[% c.uri_for('/user/remove') %]">Удалить аккаунт</a></li>
+</ul>
+</div>

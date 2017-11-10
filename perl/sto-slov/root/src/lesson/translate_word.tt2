@@ -1,0 +1,63 @@
+<!-- TRANSLATE_WORD_PAGE_MARKER -->
+<div id="lesson_words">
+[% n = 1 -%]
+[% FOREACH w IN words -%]
+    [% word_class = 'word' -%]
+    [% IF n == current_word_number -%]
+        [% word_class = word_class _ ' selected' -%]
+    [% END -%]
+    [% IF is_added_to_known_words.exists(w) -%]
+        [% word_class = word_class _ ' known' -%]
+    [% END -%]
+    <a class="[% word_class | html %]" href="[% c.uri_for("/lesson/translate_word/$n") | html %]">
+       [% w | html %]&nbsp;([% frequency_of.$w | html %])
+    </a>
+[% n = n + 1 -%]
+[% END -%]
+</div>
+
+<div id="navigation_arrows">
+[% IF prev_word_number -%]
+    <a href="[% c.uri_for("/lesson/translate_word/$prev_word_number") | html %]">&larr;</a>
+[% ELSE -%]
+    &larr;
+[% END -%]
+[% IF next_word_number -%]
+    <a href="[% c.uri_for("/lesson/translate_word/$next_word_number") | html %]">&rarr;</a>
+[% ELSE -%]
+    <a href="[% c.uri_for('/lesson/finish') %]">&rarr;</a>
+[% END -%]
+</div>
+
+[% IF c.user_exists -%]
+    [% IF NOT is_added_to_known_words.exists(word) -%] 
+        <div id="add_to_known_words_button">
+            <form name="add_to_known_words_form" action="[% c.uri_for('/lesson/add_to_known_words/') %][% current_word_number | html %]">
+                <button name="add_to_known_words" type="button" onclick="addToKnownWords([% current_word_number -%])">Добавить '[% word | html -%]' в известные слова</button>
+            </form>
+        </div>
+    [% END -%]
+[% END -%]
+
+<ul id="tabs">
+    [% FOREACH d IN dictionaries -%]
+    <li>
+        <a href="#dict_[% d.id | html %]">[% d.description | html %]</a>
+    </li>
+    [% END -%]
+</ul>
+[% tab_number = 1 -%]
+[% FOREACH d IN dictionaries -%]
+[%
+    USE url = String(d.url);
+    url = url.replace('%w', word);
+-%]
+<div class="[% tab_number == 1 ? 'tabContent' : 'tabContent hide' %]" id="dict_[% d.id | html %]">
+    <div>
+        <iframe class="dict_iframe" src="[% url | html %]" width="100%" height="6000">
+            Ваш браузер не поддерживает плавающие фреймы!
+        </iframe>
+    </div>
+</div>
+[% tab_number = tab_number + 1 -%]
+[% END -%]

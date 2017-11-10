@@ -1,0 +1,3 @@
+<!-- LOGIN_PAGE_MARKER -->
+[% META title = 'Войти' %]
+[% form %]

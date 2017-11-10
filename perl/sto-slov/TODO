@@ -1,0 +1,26 @@
+- Add test for checking dictionaries availablility (e.g. Rambler's dict is closed)
+- Fix online dictionaries that use redirect or add new ones
+- IE: remove border for image buttons at bottom
+- SS::Exception::* with user_friendly() error message field support
+- Drop words longer than N symbols in Tokenizer (MAX_WORD_LENGTH)
+- Add language flag icons
+- Extra stopwords:
+-- Add controller to list/edit/add/delete them [ADM]
+-- Add links for adding stopwords during live lesson [ADM]
+- Add interface for managing dictionaries [ADM]
+- Per-controller session storage with automatic cleanup if another controller is used (?)
+- Consider using Catalyst::Plugin::I18N::PathPrefix for language selection (?)
+- Extract ZIP archives and search subtitle files automatically
+- Implement live subtitle search using external sites
+- Add more languages: de, fr, es
+- Add caching: http://search.cpan.org/~hkclark/Catalyst-Manual-5.9002/lib/Catalyst/Manual/Cookbook.pod#Caching 
+- Improve session management: http://search.cpan.org/~hkclark/Catalyst-Manual-5.9002/lib/Catalyst/Manual/Cookbook.pod#Sessions
+- Add 'check all words as known' feature
+- Automatically validate HTML/CSS using W3C validator in tests
+- call onload="initTabs()" only on translate page
+- Try HTTP::Recorder'ed WWW tests
+- User hints: install ADBlock!
+- Add WIKI as dictionary (with new type)
+- Get rid of 'user_obj' in stash (Root & User controllers)
+- Create custom 404 and 500 page
+- fix tests: create tmp dir for session data (live-www-common-case.t ....... 1/940 [error] Caught exception in engine "mkdir /tmp/ss/session/data/1: Permission denied at /usr/share/perl5/Cache/FileBackend.pm line 222")

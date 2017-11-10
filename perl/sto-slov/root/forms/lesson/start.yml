@@ -1,0 +1,45 @@
+---
+indicator: submit
+id: "lesson_start_form"
+elements:
+    - type: File
+      name: subtitle_file
+      label: "Файл субтитров:"
+      constraints:
+          - type: Required
+            message: "* Ой!"
+          - type: File::MinSize
+            minimum: 1
+            message: "Файл слишком маленький!"
+          - type: File::MaxSize
+            maximum: 1000000
+            message: "Файл слишком большой!"
+    - type: Checkboxgroup
+      name: dictionary_id_list
+      label: "Список словарей:"
+      constraints:
+          - type: Required
+            message: "* Ой!"
+      validator: "SS::DictionaryIdListIsValid"
+    - type: Select
+      name: default_dictionary_id
+      label: "Любимый словарь:"
+      constraints:
+          - type: Required
+            message: "* Ой!"
+      validator: "SS::DefaultDictionaryIdIsValid"
+    - type: Text
+      name: lesson_limit
+      label: "Количество слов:"
+      value: 100
+      constraints:
+          - type: Required
+            message: "* Ой!"
+          - type: Callback
+            callback: "SS::Form::Constraint::lesson_limit_range"
+    - type: Checkbox
+      name: save_my_preferences
+      label: "Запомнить мой выбор:"
+    - type: Submit
+      name: submit
+      value: "Начать урок!"

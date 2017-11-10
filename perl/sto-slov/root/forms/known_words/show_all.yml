@@ -1,0 +1,10 @@
+---
+indicator: submit
+id: "known_words_show_all_form"
+elements:
+    - type: Checkboxgroup
+      name: known_word_ids
+      label: "Список известных слов:"
+    - type: Submit
+      name: submit
+      value: "Я забыл(а) отмеченные слова, показывайте мне их снова"
