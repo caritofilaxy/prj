@@ -24,5 +24,16 @@ sub set_dist2sun {
     $self->{_dist2sun} = $dist if $dist;
 }
 
+sub rebel_yell {
+	print "Awwwwww!";
+}
+
+
+sub DESTROY {
+	my $self = shift;
+	$self->rebel_yell;
+}
+
+
 1;
 

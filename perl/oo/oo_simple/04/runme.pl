@@ -1,9 +1,12 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
 package Planet;
 
 # this is an example of separate initialization function from constructor
 
-use strict;
-use warnings;
 use Carp;
 
 STDOUT->autoflush(1);
@@ -11,21 +14,13 @@ STDOUT->autoflush(1);
 sub new {
 	Carp::carp("Options should be array, not anything else") if (ref($_[1]) eq 'ARRAY');
 	my ($class, @args) = @_;
-	my $self = bless {}, $class;
+	print "NEW: $class\n";
+	my $self = bless { _name => $args[0],
+					   _d2s => $args[1],
+					   _rad => $args[2],
+						}, $class;
 	print "ref(myself) is ", ref($self), "\n";
-	$self->init(@args);
 	return $self;
-}
-
-sub init {
-	
-	my ($self, @args) = @_;
-	my %init = (_name=>1, _d2s=>1,_rad=>1);
-	$init{_name} = $args[0];
-	$init{_d2s} = $args[1];
-	$init{_rad} = $args[2];
-	%$self = %init;
-	return $self
 }
 
 sub get_name { $_[0]->{_name} };
@@ -42,11 +37,14 @@ sub print_me {
 sub goto_sun {
 	my ($self) = @_;
 	my $d = $self->get_d2s();
-	while ($d-->0) {
-		print "$d";
+	while ($d-->1) {
+		print "$d ";
 		sleep 1;
 	};
 	print "Kaboom!!!\n";
 }
 
-1;
+package main;
+my $mercury = Planet->new("Mercury", 7, 2440);
+$mercury->print_me();
+#$mercury->goto_sun();
