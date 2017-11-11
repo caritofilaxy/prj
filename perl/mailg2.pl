@@ -23,11 +23,17 @@ while(<$log>) {
 
 my $ids = [ keys %{$strings} ];
 
+my $hash = {};
+my $rec = {};
+my $to_list = [];
+
 foreach my $id (@{$ids}) {
 	seek($log, 1, 0);
+	$hash->{$id} = $rec;
 	while (<$log>) {
-		print if /$id/;
+		$hash->{$id}->{$rec} = { from => $1 } if (/$id.+from=<(.+?)>/);
+		$hash->{$id}->{$rec} = { to => $1 } if (/$id.+to=<(.+?)>/);
 	 }
-print "="x90, "\n";
 }
-print Dumper($table);
+
+print Dumper($hash);
