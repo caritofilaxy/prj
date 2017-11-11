@@ -7,7 +7,7 @@ use warnings;
 
 use Data::Dumper;
 
-my $logfile = "../../../Downloads/maillog_0";
+my $logfile = "../../../Downloads/maillog";
 die "cant open $logfile" unless open(my $log, "<", $logfile);
 
 my $message_id = {};
@@ -25,11 +25,14 @@ my $table;
 for my $msg_id (keys %{$message_id}) {
     seek($log, 0, 0);
 	$table->{$msg_id} = {};
+	my $to_list = [];
     while(<$log>) {
     	$table->{$msg_id} = { "time_from" => $1, "from" => $2 } 
 							if (/^(\w+\s\d\d?\s\d+?\:\d+?\:\d+?)\s.*$msg_id:\sfrom=<(.*)?>/ ); 
-		$table->{$msg_id} = { "time_to" => $1, "to" => $2 } 
-							if (/^(\w+\s\d\d?\s\d+?\:\d+?\:\d+?)\s.*$msg_id:\sto=<(.*)?>/ ); 
+		if (/^(\w+\s\d\d?\s\d+?\:\d+?\:\d+?)\s.*$msg_id:\sto=<(.*)?>/ ) {
+			push @{$to_list}, $2;
+			$table->{$msg_id} = { "time_to" => $1, "to" => $to_list } 
+		}
 	}
 }
 
