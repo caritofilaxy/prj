@@ -15,8 +15,6 @@ my $pedronegro = Coffee->new(name=>"PN", exporter=>"PN Limited", volume=>1000, o
 $ahmad->show_attrs;
 $pedronegro->show_attrs;
 
-
-
 #my $brookbond = Tea->new(name=>"Akbar", color=>"Yellow");
 #$brookbond->show_attrs;
 

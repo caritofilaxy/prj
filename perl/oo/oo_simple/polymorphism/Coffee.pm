@@ -34,6 +34,12 @@ sub get_volume { $_[0]->{_volume} };
 sub show_attrs {
 	my ($self) = @_;
 	print "Name: ", $self->get_name, ", Origin: ", $self->get_origin, ", Exporter: ", $self->get_exporter, ", Volume: ", $self->get_volume, "\n";
+	this_func();	
+}
+
+sub this_func {
+	my ($package, $file, $line, $subr, $has_args) = (caller(1))[0,1,2,3,4];
+	print "Package: $package, File: $file, Line: $line, Subr: $subr, HasArgs: $has_args\n";
 }
 
 1;
