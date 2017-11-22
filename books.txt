@@ -1,0 +1,13 @@
+http://c.learncodethehardway.org/book/
+http://www.cprogramming.com/tutorial/c-tutorial.html
+
+http://www.programmingsimplified.com/c-program-examples
+http://www.programiz.com/c-programming/examples/source-code-output
+http://www.c4learn.com/c-programs/
+
+http://www.tutorialspoint.com/cprogramming/c_useful_resources.htm
+http://www.codingunit.com/c-tutorial-error-handling-exception-handling
+http://www.studytonight.com/c/error-handling-in-c.php
+
+
+http://www.onlineprogrammingbooks.com/c/

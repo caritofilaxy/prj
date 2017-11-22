@@ -1,6 +1,5 @@
 #!/usr/bin/perl
 
-use 
 use Element;
 
 $root;
