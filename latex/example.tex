@@ -31,12 +31,21 @@ Write your subsection text here.
 
 \begin{otherlanguage*}{russian}
 \subsection{Слоны дут на север}
+% Устаревшая форма декларирущих команд
 У попа {\it была} {\bf собака}
 
-В этой \itshape фразе почти все \bfseries 
+% Декларирующие команды (scope)
+\noindentВ этой \itshape фразе почти все \bfseries 
 набрано курсивом, \ttfamily но кое что
 \upshape еще и жирное, \rmfamily а где-то
 и вовсе \mdseries моноширинное.
+
+Сначала {\bfseries жирное, потом {\itshape курсив, потом}
+без курсива, потом} без жирного.
+
+% Команды с параметром
+Сначала \textbf{жирное, потом \textit{курсив, потом} без курсива, потом} без жирного.
+
 
 \end{otherlanguage*}
 
