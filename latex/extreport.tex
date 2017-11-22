@@ -1,0 +1,63 @@
+\documentclass[oneside,final,14pt]{article}
+\usepackage{graphicx}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{vmargin}
+\setmarginsrb{2cm}{1.5cm}{1cm}{1.5cm}{0pt}{0mm}{0pt}{13mm}
+
+\begin{document}
+
+
+\title{Introduction to \LaTeX{}}
+\author{Author's Name}
+
+\maketitle
+
+\begin{abstract}
+The abstract text goes here.
+\end{abstract}
+
+\section{Introduction}
+Here is the text of your introduction.
+
+\begin{equation}
+    \label{simple_equation}
+    \alpha = \sqrt{ \beta }
+\end{equation}
+
+\subsection{Subsection Heading Here}
+Write your subsection text here.
+
+\begin{otherlanguage*}{russian}
+\subsection{Слоны дут на север}
+% Устаревшая форма декларирущих команд
+У попа {\it была} {\bf собака}
+
+% Декларирующие команды (scope)
+\noindentВ этой \itshape фразе почти все \bfseries 
+набрано курсивом, \ttfamily но кое что
+\upshape еще и жирное, \rmfamily а где-то
+и вовсе \mdseries моноширинное.
+
+\noindentСначала {\bfseries жирное, потом {\itshape курсив, потом} без курсива, потом} без жирного.
+
+% Команды с параметром
+\noindentСначала \textbf{жирное, потом \textit{курсив, потом} без курсива, потом} без жирного.
+
+% Команды в форме окружения
+\noindentСначала \begin{bfseries} жирное, потом 
+        \begin{itshape} курсив, потом
+        \end{itshape}без курсива, потом
+        \end{bfseries} без жирного.
+
+
+\end{otherlanguage*}
+
+\subsection{Subsection Heading Here next}
+Write your subsection text here next.
+
+\section{Conclusion}
+Write your conclusion here.
+
+\end{document}
