@@ -1,3 +1,0 @@
-<!-- CHANGE_EMAIL_PAGE_MARKER -->
-[% META title = 'Изменить Email' %]
-[% form %]

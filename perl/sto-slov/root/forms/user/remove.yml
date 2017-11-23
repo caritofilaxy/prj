@@ -1,8 +1,0 @@
----
-indicator: submit
-action: "/user/remove"
-id: "remove_account_form"
-elements:
-    - type: Submit
-      name: submit
-      value: "Удалить аккаунт. Совсем!"

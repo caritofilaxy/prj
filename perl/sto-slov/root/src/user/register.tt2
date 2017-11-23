@@ -1,3 +1,0 @@
-<!-- REGISTER_PAGE_MARKER -->
-[% META title = 'Создать аккаунт' %]
-[% form %]

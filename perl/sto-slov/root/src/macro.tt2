@@ -1,5 +1,0 @@
-[% MACRO obfuscate_email(email) PERL -%]
-    my $email = $stash->get('email');
-    my ($mailbox, $domain) = split /\@/, $email;
-    print qq{'$mailbox\@' + '$domain'};
-[% END -%]
