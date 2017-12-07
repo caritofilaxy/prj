@@ -102,7 +102,7 @@ if ($lang eq 'c') {
 	$makefile = '';
 	$ext = 'pl';
 } else {
-	say "Wrong lang";
+	print "Wrong lang", "\n";
 }
 
 if ($makefile) {
