@@ -2,6 +2,10 @@
 #
 use strict;
 use warnings;
+<<<<<<< HEAD
+use v5.20;
+=======
+>>>>>>> 2b9e9101c6f1caca46f2490d610ac09943ec4dc7
 
 ############### TEMPLATES ##################
 ### C ###

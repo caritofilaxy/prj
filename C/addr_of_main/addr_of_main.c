@@ -3,9 +3,11 @@
 
 int main(void) {
         char *c = malloc(1);
-
-        printf("%p\n", &main);
-        printf("%p\n", &c);
+        int a, *p;
+        p = &main;
+        printf("%p\n", (void *)p);
+        printf("%p\n", (void *)&c);
+        printf("%p\n", (void *)&a);
 
         return 0;
 }
