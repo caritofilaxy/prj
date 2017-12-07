@@ -1,69 +1,45 @@
 #!/usr/bin/perl
 
-use Term::ANSIColor;                
+use Term::ANSIColor qw(:constants);  
 
 while(1) {
     print "\033[2J";
     @output = `sensors`;
-    $sum = 0;
+    $tcosum = 0;
+    $tc = 0;
+    $tm = 0;
     $c = 0;
     for (@output) {
         if (/^CPU T/) {
-           ($m,undef, $m_t) = split(/\s+/, $_);
-            $m_t =~ s/\+(\d+).+/$1/;
-            print $m . ": ";
-            if ($m_t > 60) {
-                print_red($m_t);
-                print "\n";
-            } else {
-                print_green($m_t);
-                print "\n";
-            }
+           ($m,undef, $tc) = split(/\s+/, $_);
+            $tc =~ s/\+(\d+).+/$1/;
         }
     
         if (/^MB/) {
-           ($m,undef, $m_t) = split(/\s+/, $_);
-            $m_t =~ s/\+(\d+).+/$1/;
-            print $m . ": ";
-            if ($m_t > 45) {
-                print_red($m_t);
-                print "\n";
-            } else {
-                print_green($m_t);
-                print "\n";
-            }
+           ($m,undef, $tm) = split(/\s+/, $_);
+            $tm =~ s/\+(\d+).+/$1/;
         }
 
         if (/(^Core)/) {
             $c++;
             $core_t = (split(/\s+/, $_))[2];
             $core_t =~ s/\+(\d+).+/$1/;
-            $sum += $core_t;
+            $tcosum += $core_t;
         }
     }
-$avg = $sum/$c;
-print "Cores: "; 
-if ($avg > 65) {
-    print_red($avg);
-} else {
-    print_green($avg);
-}
-print "\n";
+$avg = $tcosum/$c;
+$avg = ($avg + $tm + $tc) / 3;
+printf "%.4f", c_print($avg);
 
 sleep 5;
 } 
 
 
-sub print_red {
-    $val = shift;
-    print color 'red';
-    print $val;
-    print color 'reset';
-}
-
-sub print_green {
-    $val = shift;
-    print color 'green';
-    print $val;
-    print color 'reset';
+sub c_print {
+    if ($_[0] > 50) {
+        print RED, $_[0], RESET;
+    } else {
+        print GREEN, $_[0], RESET;
+    }
+print "\n";
 }
