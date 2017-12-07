@@ -2,7 +2,9 @@
 #
 use strict;
 use warnings;
-use v5.22;
+use v5.20;
+
+die "Usage: pmk {name} {lang}" unless scalar @ARGV == 2;
 
 ############### TEMPLATES ##################
 ### C ###
@@ -12,9 +14,9 @@ my $sandbox_c = <<"SANDBOX_C";
 \#define MSG \"Hello world\"
 
 int main(void) {
-        printf("\%s\\n", MSG);
+	printf("\%s\\n", MSG);
 
-        return 0\;
+	return 0\;
 }
 SANDBOX_C
 
@@ -24,13 +26,7 @@ SOURCE := \$\(NAME\).c
 OBJFILE := \$\(NAME\).o
 
 make:
-	gcc -Wall -Wextra -std=c89 -ansi -pedantic -o \$(NAME) \$(SOURCE)
-
-clang:
-	clang -o \$(NAME) \$(SOURCE)
-
-debug:
-	gcc -g -o \$(NAME) \$(SOURCE)
+	gcc -Wall -ansi -pedantic -o \$(NAME) \$(SOURCE)
 
 MKFILE_C
 
@@ -39,12 +35,12 @@ my $sandbox_asm = <<"SANDBOX_ASM";
 section .data
 section .text
 
-        global _start
+	global _start
 
 _start:
-        nop
+	nop
 
-        nop
+	nop
 
 section .bss
 SANDBOX_ASM
@@ -56,7 +52,6 @@ OBJFILE := \$(NAME).o
 
 .PHONY: make
 make: as ld
-	nasm -f elf -o \$(OBJFILE) \$(SOURCE)
 
 .PHONY: debug
 debug: as_d ld
@@ -71,7 +66,7 @@ as_d:
 
 .PHONY: ld
 ld:
-	ld -o \$(NAME) \$(OBJFILE)
+	ld -m32 -o \$(NAME) \$(OBJFILE)
 
 .PHONY: clean
 clean:
@@ -98,26 +93,26 @@ my $makefile;
 my $ext;
 
 if ($lang eq 'c') {
-        $sandbox = $sandbox_c;
-        $makefile = $makefile_c;
-        $ext = 'c';
+	$sandbox = $sandbox_c;
+	$makefile = $makefile_c;
+	$ext = 'c';
 } elsif ($lang eq 'asm') {
-        $sandbox = $sandbox_asm;
-        $makefile = $makefile_asm;
-        $ext = 'asm';
+	$sandbox = $sandbox_asm;
+	$makefile = $makefile_asm;
+	$ext = 'asm';
 } elsif ($lang eq 'perl') {
-        $sandbox = $sandbox_perl;
-        $makefile = '';
-        $ext = 'pl';
+	$sandbox = $sandbox_perl;
+	$makefile = '';
+	$ext = 'pl';
 } else {
-        say "Wrong lang";
+	say "Wrong lang";
 }
 
 if ($makefile) {
-        $makefile =~ s#sandbox#$name#g;
-        open(my $mkfl, ">", "$name/Makefile") || die "cant open $name/Makefile";
-        print $mkfl $makefile;
-        close($mkfl);
+	$makefile =~ s#sandbox#$name#g;
+	open(my $mkfl, ">", "$name/Makefile") || die "cant open $name/Makefile";
+	print $mkfl $makefile;
+	close($mkfl);
 }
 
 open(my $sb, ">", "$name/$name.$ext") || die "cant open $name/$name.$ext";

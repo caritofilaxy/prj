@@ -1,0 +1,45 @@
+        -:    0:Source:collinz.c
+        -:    0:Graph:collinz.gcno
+        -:    0:Data:collinz.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include<stdio.h>
+        -:    2:
+        -:    3:#define MSG "Hello world"
+        -:    4:
+function magic called 12 returned 100% blocks executed 100%
+       12:    5:int magic(int x) {
+       12:    6:    int c=0;
+     1107:    7:    while   ( x != 1 && x != 0 ) {
+branch  0 taken 99% (fallthrough)
+branch  1 taken 1%
+branch  2 taken 100%
+branch  3 taken 0% (fallthrough)
+     1083:    8:        if (x%2 == 0)
+branch  0 taken 67% (fallthrough)
+branch  1 taken 33%
+      721:    9:            x/=2;
+        -:   10:        else
+      362:   11:            x = 3*x+1;
+        -:   12:/*        printf("%i ", x);     */   
+     1083:   13:        c++;
+        -:   14:    }
+        -:   15:/*   printf("\n"); */
+        -:   16:
+       12:   17:    return c;
+        -:   18:}
+        -:   19:
+function main called 1 returned 100% blocks executed 100%
+        1:   20:int main(void) {
+        -:   21:    
+        -:   22:    int i;
+        -:   23:
+       13:   24:    for (i = 1000; i < 10000; i += 753)
+branch  0 taken 92%
+branch  1 taken 8% (fallthrough)
+       12:   25:        printf("%i\n", magic(i));
+call    0 returned 100%
+call    1 returned 100%
+        -:   26:
+        1:   27:	return 0;
+        -:   28:}
