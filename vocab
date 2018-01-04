@@ -1,0 +1,79 @@
+HERE PL = programming language 
+-----------------------
+language processors - program that somehow operates on PL abstractions.
+simplest example: text editor, that recognizes syntax, do foldings, shows errors, formatting, refactoring. 
+
+-----------------------
+Finite State Machine
+Finite State Transducer 
+
+2 ways of PL evolution: 
+    1. Grow of abstraction level
+    2. Grow of decomposition level (d. :~ growing quantity of methods to represent system as 
+                                             interaction of isolated different entities )
+-----------------------
+evo timeline
+--> PL with cond/uncond jumps (asm, fortran) 
+--> structural PL (pascal) 
+    структурированные конструкции управления (tr 2 eng)
+--> procedural PL (algol68, same pascal) 
+--> OOP (c++, java)
+--> functional PL (haskell, *ml(ocaml))
+
+isolated branches: 
+    logical PLs (prolog)
+    hardware PLs (Verilog, VHDL, pluspec(?), handle C)
+
+-----------------------
+algol68 : 2 level grammar van vien garden(?)
+-----------------------
+PL eiffel, Bertran Meyer, design by contract paradigm
+-----------------------
+PL = syntax + semantics + pragmatics (linguistic notions)
+Частично рекурсивная функция(?), Тьюринг полный PL
+-----------------------
+Написание программы - это док-во путем разбора случаев
+Соответствие (изоморфизм) Кари Хоарда
+-----------------------
+метод статической верификамии, module checking
+-----------------------
+чистка циклов, loop invariant quote motion
+------------------------
+defuse сеть, цепочка
+------------------------
+s-m-n теорема Клини
+------------------------
+экспликация
+------------------------
+3 проекции Футамуры - Ершова - Турчинского
+------------------------
+смешанный вычислитель
+-----------------------
+bootstrapping - раскрутка
+-----------------------
+набор просмотров
+-----------------------
+Терехов - Технология программирования
+-----------------------
+компилятор - набор просмотров: (like preprocessing, lexical analysis, 
+                                see gcc -ftime-report)
+-------------------------
+представление. (e.g. rtl - register transfer language)
+--------------------------
+gcc.gnu.org/wiki
+--------------------------
+Синтаксический анализ
+--------------------------
+Теория языков (основана на порождающих грамматиках(Noam Chomsky), механизм для порождения цепочек языка)
+4 класса грамматик, такие грамматики определяют все рекурсивно перечислимые языки
+система переписывания
+--------------------------
+X - алфавит (терминалов): произвольное непустое конечное множество
+X* - множество всех слов конечной длины в алфавите
+Е (эпсилон) - пустое слово
+альфа, бета, гамма - слова
+|X| - длина (колво символов)
+язык в алфавите X - произвольное подмножество слов
+---------------------------
+
+
