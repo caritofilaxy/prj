@@ -4,7 +4,6 @@ use LWP::UserAgent;
 use XML::Simple;
 use HTML::StripTags qw(strip_tags);
 #use Data::Dumper;
-
 my $string = @ARGV[0];
 my $req;
 
