@@ -19,5 +19,4 @@ int main(void) {
 
 	connect(sockd, (struct sockaddr *)&xfersrv, sizeof(xfersrv));
 
-	return 0;
 	}
