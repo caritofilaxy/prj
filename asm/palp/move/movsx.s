@@ -19,5 +19,5 @@ _start:
     movsx %bx, %eax
 
     mov $1, %eax
-    mov $0, %ebx
+    mov $18, %ebx
     int $0x80

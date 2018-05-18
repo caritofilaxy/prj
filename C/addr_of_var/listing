@@ -1,0 +1,30 @@
+aesin@sparky:/opt/addr_of_var$ cat addr_of_var.c 
+#include<stdio.h>
+
+int main(void) {
+
+        unsigned v1=0xdeadbeef;
+
+        printf("0x%x %p\n", v1, (void*)&v1);
+
+        return 0;
+}
+aesin@sparky:/opt/addr_of_var$ gdb -q addr_of_var
+Reading symbols from addr_of_var...done.
+(gdb) r
+Starting program: /opt/addr_of_var/addr_of_var 
+0xdeadbeef 0xbffff61c
+[Inferior 1 (process 2845) exited normally]
+(gdb) q
+aesin@sparky:/opt/addr_of_var$ ./addr_of_var 
+0xdeadbeef 0xbff03dfc
+aesin@sparky:/opt/addr_of_var$ cat Makefile 
+NAME := addr_of_var
+SOURCE := $(NAME).c
+OBJFILE := $(NAME).o
+
+make:
+        gcc -Wall -ansi -pedantic -o $(NAME) $(SOURCE)
+debug:
+        gcc -Wall -ansi -pedantic -g -o $(NAME) $(SOURCE)
+
