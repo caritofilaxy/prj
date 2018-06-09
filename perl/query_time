@@ -6,7 +6,8 @@ use warnings;
 use Time::HiRes qw(tv_interval gettimeofday);
 use LWP::UserAgent;
 
-my $target = "http://perl.org";
+#my $target = "http://perl.org";
+my $target = "http://www.cbr.ru/currency_base/daily.aspx?date_req=07.06.2018";
 
 my $ua = LWP::UserAgent->new(agent=>"eloggo nickel 54.2");
 my $t0 = [gettimeofday()];
@@ -16,4 +17,5 @@ my $delta = tv_interval($t0, [gettimeofday]);
 my $text = $response->content;
 
 print $text;
-print $delta."\n";
+#print $target."\n";
+print "query time: ".$delta." seconds \n";
