@@ -1,13 +1,15 @@
+#include<stdio.h>
 #include "dec2bin.h"
 #include "size.h"
 
 int main(int argc, char **argv) {
 
+/*
         if (argc != 2) {
             printf("Usage: dec2bin decimal_number\n");
-            exit 1;
+            return -1;
         }
-
+*/
 
 	int d;
 	char vec[SZ];

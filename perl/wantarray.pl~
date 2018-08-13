@@ -14,10 +14,3 @@ my @plural = ret_arr_or_sca();
 
 print "Returned scalar: $single\n";
 print "Returned list: @plural\n";
-
-this,test,line,is
-
-this,is,test,line
-this,line
-this,is,test,line
-this,is,test,line

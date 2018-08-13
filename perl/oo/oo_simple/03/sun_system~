@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 
-use lib ".";
 use Planets;
 
 my $mercury = Planets->new(dist2sun=>58,radius=>2440);
